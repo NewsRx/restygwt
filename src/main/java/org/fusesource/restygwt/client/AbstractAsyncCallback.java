@@ -77,7 +77,6 @@ public abstract class AbstractAsyncCallback<T> implements AsyncCallback<JavaScri
                 getLogger().log(Level.FINE, "Could not parse response: " + e, e);
             }
             callback.onFailure(method, e);
-            return;
         }
     }
 

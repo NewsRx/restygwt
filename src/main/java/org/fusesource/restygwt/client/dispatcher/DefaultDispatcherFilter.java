@@ -20,13 +20,12 @@ package org.fusesource.restygwt.client.dispatcher;
 
 import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.logging.client.LogConfiguration;
-
-import java.util.logging.Logger;
-
 import org.fusesource.restygwt.client.Dispatcher;
 import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.callback.CallbackFactory;
 import org.fusesource.restygwt.client.callback.FilterawareRequestCallback;
+
+import java.util.logging.Logger;
 
 public class DefaultDispatcherFilter implements DispatcherFilter {
 
@@ -34,7 +33,7 @@ public class DefaultDispatcherFilter implements DispatcherFilter {
      * where to get a callback from. gives us the ability to use
      * customized {@link FilterawareRequestCallback}
      */
-    private CallbackFactory callbackFactory;
+    private final CallbackFactory callbackFactory;
 
     /**
      * the one and only constructor

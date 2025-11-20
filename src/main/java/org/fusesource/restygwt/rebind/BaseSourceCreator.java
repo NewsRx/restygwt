@@ -86,14 +86,13 @@ public abstract class BaseSourceCreator extends AbstractSourceCreator {
         this.source = source;
         packageName = getOpenPackageName(source.getPackage().getName());
 
-        if (source instanceof JParameterizedType) {
-            JParameterizedType ptype = (JParameterizedType) source;
+        if (source instanceof JParameterizedType ptype) {
             StringBuilder builder = new StringBuilder();
             for (JClassType type : ptype.getTypeArgs()) {
                 builder.append("__");
                 builder.append(parametersName2ClassName(type.getParameterizedQualifiedSourceName()));
             }
-            shortName = reduceName(getName(source) + builder.toString() + suffix, suffix);
+            shortName = reduceName(getName(source) + builder + suffix, suffix);
         } else {
             shortName = reduceName(getName(source) + suffix, suffix);
         }
@@ -124,10 +123,10 @@ public abstract class BaseSourceCreator extends AbstractSourceCreator {
                 stringBuilder.append("__");
                 stringBuilder.append(reduceType(genericType));
             }
-            String finalName = primaryName + stringBuilder.toString() + suffix;
+            String finalName = primaryName + stringBuilder + suffix;
             if (finalName.length() > MAX_FILE_NAME_LENGTH) {
                 //File name is still too long wrapping it out aggressively
-                String baseName = primaryName + stringBuilder.toString();
+                String baseName = primaryName + stringBuilder;
 
                 int firstPosition = baseName.indexOf("__");
                 int lastPosition = baseName.lastIndexOf("__");
@@ -193,9 +192,6 @@ public abstract class BaseSourceCreator extends AbstractSourceCreator {
         }
         classes.add(name);
         PrintWriter writer = context.tryCreate(getLogger(), packageName, shortName);
-        if (writer == null) {
-            return null;
-        }
         return writer;
     }
 

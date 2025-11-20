@@ -10,7 +10,7 @@ import java.util.Map;
  * interface.
  */
 public class ServiceRoots {
-    private static Map<String, String> serviceRoots = new HashMap<String, String>();
+    private static final Map<String, String> serviceRoots = new HashMap<String, String>();
 
     public static void add(String key, String url) {
         if (url != null && !url.endsWith("/")) {

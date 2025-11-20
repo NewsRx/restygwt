@@ -41,9 +41,7 @@ public class SimpleCacheKey implements CacheKey {
         if (anObject instanceof CacheKey) {
             CacheKey aCacheKey = (CacheKey) anObject;
 
-            if (aCacheKey.toString().equals(toString())) {
-                return true;
-            }
+            return aCacheKey.toString().equals(toString());
         }
 
         return false;

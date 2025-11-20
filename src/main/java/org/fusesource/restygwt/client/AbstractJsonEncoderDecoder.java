@@ -19,17 +19,11 @@
 package org.fusesource.restygwt.client;
 
 import com.google.gwt.i18n.client.DateTimeFormat;
-import com.google.gwt.json.client.JSONArray;
-import com.google.gwt.json.client.JSONBoolean;
-import com.google.gwt.json.client.JSONException;
-import com.google.gwt.json.client.JSONNull;
-import com.google.gwt.json.client.JSONNumber;
-import com.google.gwt.json.client.JSONObject;
-import com.google.gwt.json.client.JSONParser;
-import com.google.gwt.json.client.JSONString;
-import com.google.gwt.json.client.JSONValue;
+import com.google.gwt.json.client.*;
 import com.google.gwt.xml.client.Document;
 import com.google.gwt.xml.client.XMLParser;
+import org.fusesource.restygwt.client.Json.Style;
+import org.fusesource.restygwt.client.util.Base64Codec;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -42,9 +36,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-
-import org.fusesource.restygwt.client.Json.Style;
-import org.fusesource.restygwt.client.util.Base64Codec;
 
 /**
  *
@@ -546,7 +537,7 @@ public abstract class AbstractJsonEncoderDecoder<T> implements JsonEncoderDecode
         }
         JSONArray array = asArray(value);
         int size = array.size();
-        byte template[] = new byte[size];
+        byte[] template = new byte[size];
         for (int i = 0; i < size; i++) {
             template[i] = encoder.decode(array.get(i));
         }

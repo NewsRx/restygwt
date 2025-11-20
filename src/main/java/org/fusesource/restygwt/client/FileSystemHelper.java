@@ -44,12 +44,7 @@ public class FileSystemHelper {
 
         }
 
-        if (baseUrl.startsWith("file") && requestUrl.startsWith(".")) {
-            return true;
-
-        }
-
-        return false;
+        return baseUrl.startsWith("file") && requestUrl.startsWith(".");
 
     }
 

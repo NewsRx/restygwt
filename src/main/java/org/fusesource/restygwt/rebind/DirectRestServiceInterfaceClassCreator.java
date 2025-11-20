@@ -26,13 +26,12 @@ import com.google.gwt.core.ext.typeinfo.JMethod;
 import com.google.gwt.core.ext.typeinfo.JParameter;
 import com.google.gwt.core.ext.typeinfo.JPrimitiveType;
 import com.google.gwt.user.rebind.ClassSourceFileComposerFactory;
-
-import java.lang.annotation.Annotation;
-
 import org.fusesource.restygwt.client.RestService;
 import org.fusesource.restygwt.rebind.util.AnnotationCopyUtil;
 import org.fusesource.restygwt.rebind.util.AnnotationUtils;
 import org.fusesource.restygwt.rebind.util.OnceFirstIterator;
+
+import java.lang.annotation.Annotation;
 
 /**
  * @author <a href="mailto:bogdan.mustiata@gmail.com">Bogdan Mustiata</a>
@@ -63,7 +62,7 @@ public class DirectRestServiceInterfaceClassCreator extends DirectRestBaseSource
     }
 
     private String getMethodParameters(JMethod method) {
-        StringBuilder result = new StringBuilder("");
+        StringBuilder result = new StringBuilder();
 
         for (JParameter parameter : method.getParameters()) {
             Annotation[] supportedAnnotations = AnnotationUtils.findSupportedAnnotations(parameter.getAnnotations());
@@ -89,7 +88,7 @@ public class DirectRestServiceInterfaceClassCreator extends DirectRestBaseSource
     }
 
     private String getAnnotationsAsString(Annotation[] annotations) {
-        StringBuilder result = new StringBuilder("");
+        StringBuilder result = new StringBuilder();
         OnceFirstIterator<String> space = new OnceFirstIterator<String>("", " ");
 
         for (String annotation : getAnnotationsAsStringArray(annotations)) {

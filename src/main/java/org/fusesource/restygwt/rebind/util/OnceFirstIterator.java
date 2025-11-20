@@ -28,8 +28,8 @@ import java.util.Iterator;
  * @param <T>
  */
 public class OnceFirstIterator<T> implements Iterator<T> {
-    private T firstValue;
-    private T nextValue;
+    private final T firstValue;
+    private final T nextValue;
     private boolean firstReturned;
 
     public OnceFirstIterator(T firstValue, T nextValue) {

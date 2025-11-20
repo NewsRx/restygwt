@@ -24,7 +24,7 @@ import org.fusesource.restygwt.client.callback.CallbackAware;
  * @author <a href="mailto:bogdan.mustiata@gmail.com">Bogdan Mustiata</a>
  */
 public class REST<R> {
-    private MethodCallback<R> callback;
+    private final MethodCallback<R> callback;
 
     public REST(MethodCallback<R> callback) {
         this.callback = callback;

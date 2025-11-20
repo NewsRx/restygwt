@@ -145,8 +145,7 @@ public class RestServiceClassCreator extends BaseSourceCreator {
     @Override
     protected ClassSourceFileComposerFactory createComposerFactory() {
         String parameters = "";
-        if (source instanceof JGenericType) {
-            JGenericType gtype = (JGenericType) source;
+        if (source instanceof JGenericType gtype) {
             StringBuilder builder = new StringBuilder();
             builder.append("<");
             boolean first = true;
@@ -343,8 +342,7 @@ public class RestServiceClassCreator extends BaseSourceCreator {
         {
             JType type = method.getReturnType();
             String name;
-            if (type instanceof JClassType) {
-                JClassType restService = (JClassType) type;
+            if (type instanceof JClassType restService) {
                 RestServiceClassCreator generator = new RestServiceClassCreator(getLogger(), context, restService);
                 name = generator.create();
             } else {
@@ -680,8 +678,8 @@ public class RestServiceClassCreator extends BaseSourceCreator {
                         }
                         sb.append("]");
 
-                        getLogger().log(TreeLogger.DEBUG, "add call with (\"" + s + "\", \"" + sb.toString() + "\")");
-                        p("__method.addData(\"" + s + "\", \"" + sb.toString() + "\");");
+                        getLogger().log(TreeLogger.DEBUG, "add call with (\"" + s + "\", \"" + sb + "\")");
+                        p("__method.addData(\"" + s + "\", \"" + sb + "\");");
                     }
                 }
             }
@@ -917,10 +915,8 @@ public class RestServiceClassCreator extends BaseSourceCreator {
     }
 
     protected String toIteratedStringExpression(JParameter arg) {
-        StringBuilder result = new StringBuilder();
-        result.append("new org.fusesource.restygwt.client.StringIterable (").append(arg.getName()).append(")");
 
-        return result.toString();
+        return "new org.fusesource.restygwt.client.StringIterable (" + arg.getName() + ")";
     }
 
     private JClassType getCallbackTypeGenericClass(final JClassType callbackType) throws UnableToCompleteException {

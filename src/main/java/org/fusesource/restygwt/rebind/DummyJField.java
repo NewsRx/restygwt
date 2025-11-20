@@ -1,6 +1,10 @@
 package org.fusesource.restygwt.rebind;
 
-import com.google.gwt.core.ext.typeinfo.*;
+import com.google.gwt.core.ext.typeinfo.JClassType;
+import com.google.gwt.core.ext.typeinfo.JEnumConstant;
+import com.google.gwt.core.ext.typeinfo.JField;
+import com.google.gwt.core.ext.typeinfo.JMethod;
+import com.google.gwt.core.ext.typeinfo.JType;
 
 import java.lang.annotation.Annotation;
 import java.util.HashMap;
@@ -11,7 +15,7 @@ class DummyJField implements JField {
     private final JType type;
     private final String name;
     private final JMethod getterMethod;
-    private Map<Class<? extends Annotation>, Annotation> annotations =
+    private final Map<Class<? extends Annotation>, Annotation> annotations =
         new HashMap<Class<? extends Annotation>, Annotation>();
 
     DummyJField(String name, JType type, JMethod getterMethod) {

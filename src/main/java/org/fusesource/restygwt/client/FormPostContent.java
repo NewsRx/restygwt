@@ -3,7 +3,7 @@ package org.fusesource.restygwt.client;
 import com.google.gwt.http.client.URL;
 
 public class FormPostContent {
-    private StringBuilder textContent = new StringBuilder();
+    private final StringBuilder textContent = new StringBuilder();
     private boolean ampersand;
 
     public void addParameter(String name, String value) {

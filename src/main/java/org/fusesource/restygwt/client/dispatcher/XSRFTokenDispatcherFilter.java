@@ -19,13 +19,12 @@
 package org.fusesource.restygwt.client.dispatcher;
 
 import com.google.gwt.http.client.RequestBuilder;
-
 import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.callback.XSRFToken;
 
 public class XSRFTokenDispatcherFilter implements DispatcherFilter {
 
-    private XSRFToken xsrf;
+    private final XSRFToken xsrf;
 
     public XSRFTokenDispatcherFilter(XSRFToken xsrf) {
         this.xsrf = xsrf;

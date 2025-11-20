@@ -72,8 +72,7 @@ public abstract class DirectRestBaseSourceCreator extends BaseSourceCreator {
 
     private String createClassDeclarationGenericType() {
         String parameters = "";
-        if (source instanceof JGenericType) {
-            JGenericType genericType = (JGenericType) source;
+        if (source instanceof JGenericType genericType) {
             StringBuilder builder = new StringBuilder();
             builder.append("<");
             boolean first = true;

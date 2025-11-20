@@ -6,7 +6,6 @@ import com.google.gwt.core.ext.typeinfo.JClassType;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -44,7 +43,7 @@ public class AnnotationUtils {
         } else if (getAnnotation(classType, annotationType) != null) {
             return getAnnotation(classType, annotationType);
         } else {
-            List<JClassType> intefaces = Arrays.asList(classType.getImplementedInterfaces());
+            JClassType[] intefaces = classType.getImplementedInterfaces();
 
             for (JClassType itf : intefaces) {
                 annotation = getClassAnnotation(itf, annotationType);

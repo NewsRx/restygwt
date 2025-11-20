@@ -531,7 +531,7 @@ public class JsonEncoderDecoderClassCreator extends BaseSourceCreator {
             List<JField> orderedFields = null;
             if (creator != null) {
                 p("// We found a creator so we use the annotated constructor");
-                p("" + possibleType.clazz.getParameterizedQualifiedSourceName() + " rc = new " +
+                p(possibleType.clazz.getParameterizedQualifiedSourceName() + " rc = new " +
                     possibleType.clazz.getParameterizedQualifiedSourceName() + "(");
                 i(1).p("// The arguments are placed in the order they appear within the annotated constructor")
                     .i(-1);
@@ -551,9 +551,9 @@ public class JsonEncoderDecoderClassCreator extends BaseSourceCreator {
                             String expression = locator.decodeExpression(field.getType(), objectGetter, style);
 
                             String defaultValue = getDefaultValue(field);
-                            i(1).p("" + (objectGetter + " == null || " + objectGetter + " instanceof " +
-                                JSON_NULL_CLASS + " ? " + defaultValue + " : " + expression +
-                                ((field != lastField) ? ", " : ""))).i(-1);
+                            i(1).p(objectGetter + " == null || " + objectGetter + " instanceof " + JSON_NULL_CLASS +
+                                        " ? " + defaultValue + " : " + expression + ((field != lastField) ? ", " : ""))
+                                .i(-1);
 
                             return null;
                         }
@@ -563,7 +563,7 @@ public class JsonEncoderDecoderClassCreator extends BaseSourceCreator {
             }
 
             if (orderedFields == null) {
-                p("" + possibleType.clazz.getParameterizedQualifiedSourceName() + " rc = new " +
+                p(possibleType.clazz.getParameterizedQualifiedSourceName() + " rc = new " +
                     possibleType.clazz.getParameterizedQualifiedSourceName() + "();");
             }
 
@@ -659,7 +659,7 @@ public class JsonEncoderDecoderClassCreator extends BaseSourceCreator {
 
     private String getDefaultValue(JField field) {
         return field.getType().isPrimitive() == null ? "null" :
-            field.getType().isPrimitive().getUninitializedFieldExpression() + "";
+                field.getType().isPrimitive().getUninitializedFieldExpression();
     }
 
     protected void generateEnumDecodeMethod(JClassType classType, String jsonValueClass) {
